@@ -21,7 +21,7 @@ const addBookHandler = (request, h) => {
   if (!name) {
     const response = h.response({
       status: 'fail',
-      message: 'Gagal menambahkan, Mohon isi nama buku',
+      message: 'Gagal menambahkan buku. Mohon isi nama buku',
     });
     response.code(400);
     return response;
@@ -99,7 +99,7 @@ const getAllBooksHandler = (request, h) => {
   if (name) {
     const filteredBooksName = books.filter((book) => {
       // query name
-      const nameRegex = new RegExp(name, 'dicoding');
+      const nameRegex = new RegExp(name, 'gi');
       return nameRegex.test(book.name);
     });
 
